@@ -1,0 +1,111 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Brico;src:url(../fonts/bricolage-grotesque-latin-800-normal.woff2);font-weight:800}
+@font-face{font-family:Inter;src:url(../fonts/inter-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:Inter;src:url(../fonts/inter-latin-700-normal.woff2);font-weight:700}
+:root{--blue:#2F5BFF;--violet:#6B3BEA;--cyan:#21C4EE}
+*{margin:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#150F45;font-family:Inter,sans-serif}
+#bg{position:absolute;inset:0}
+.a{position:absolute;opacity:0;will-change:transform,opacity}
+.txt{left:150px;width:700px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;gap:26px}
+h1{font-family:Brico;font-weight:800;color:#fff;font-size:92px;line-height:.98;letter-spacing:-.03em}
+.sub{color:#C9CCFF;font-size:34px;font-weight:500;line-height:1.35}
+.card{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 40px 90px -20px rgba(5,3,25,.8)}
+.card img{display:block;width:100%}
+.phone{background:#0B0920;border-radius:56px;padding:13px;box-shadow:0 50px 110px -20px rgba(5,3,25,.9)}
+.phone .scr{border-radius:44px;overflow:hidden;aspect-ratio:9/16}
+.phone .scr img{width:100%;height:100%;object-fit:cover;display:block}
+.phone .notch{position:absolute;top:26px;left:50%;transform:translateX(-50%);width:96px;height:28px;border-radius:16px;background:#0B0920}
+.ring{position:absolute;border:4px solid var(--cyan);border-radius:999px;pointer-events:none}
+.center{left:0;right:0;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;text-align:center}
+.icon{width:150px;height:150px;border-radius:36px;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:700;font-size:52px}
+.lock{display:flex;align-items:center;gap:34px}
+.lock h1{font-size:140px}
+.pill{color:#fff;border:2px solid rgba(255,255,255,.35);border-radius:999px;padding:14px 28px;font-size:28px;font-weight:700}
+</style></head><body>
+<style>
+.lbl2{position:absolute;font-weight:700;font-size:24px;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:10px 20px;border-radius:999px}
+.arrow{position:absolute;height:5px;background:rgba(255,255,255,.9);border-radius:3px}
+.arrow:after{content:"";position:absolute;right:-6px;top:-10px;border-left:22px solid rgba(255,255,255,.9);border-top:12px solid transparent;border-bottom:12px solid transparent}
+.chip{background:#fff;border-radius:999px;padding:12px 18px;box-shadow:0 30px 70px -20px rgba(5,3,25,.8)}
+.chip img{display:block;width:100%}
+</style><div id="bg"></div>
+
+<!-- S0: hook -->
+<div class="a center" data-in="{{S0_0}}" data-out="{{E0}}" data-dy="30"><h1 style="font-size:130px">Stop asking for ads.</h1></div>
+<div class="a" data-in="{{S0_3}}" data-out="{{E0}}" data-dy="20" style="left:0;right:0;top:700px;text-align:center"><p class="sub">Paste a link. Write a prompt. Wait. Repeat.</p></div>
+
+<!-- S1: watches the store -->
+<div class="a txt" data-in="{{S1_0}}" data-out="{{E1}}" data-dy="30"><h1>AdsLine watches your store.</h1></div>
+<div class="a card" data-in="{{S1_1}}" data-out="{{E1}}" data-dy="60" style="left:900px;top:435px;width:900px"><img src="../crops/n_watches.png"></div>
+<div class="a ring" data-pulse="{{MID1}}" data-out="{{E1}}" style="left:1660px;top:580px;width:140px;height:62px"></div>
+
+<!-- S2: restock / new arrival -> ad ready -->
+<div class="a txt" data-in="{{S2_0}}" data-out="{{E2}}" data-dy="30"><h1>Restock or new arrival? The ad is ready.</h1></div>
+<div class="a card" data-in="{{S2_1}}" data-out="{{E2}}" data-dy="60" style="left:860px;top:470px;width:700px;padding:8px 10px"><img src="../crops/n_chip_launch.png"></div>
+<div class="a" data-in="{{S2_2}}" data-out="{{E2}}" data-dy="0" style="left:1560px;top:500px;width:40px;border-top:4px dashed rgba(255,255,255,.85)"></div>
+<div class="a card" data-in="{{S2_3}}" data-out="{{E2}}" data-dy="70" style="left:1600px;top:200px;width:230px;border-radius:18px"><img src="../crops/n_card_launch.png"></div>
+
+<!-- S3: never distorts the product -->
+<div class="a txt" data-in="{{S3_0}}" data-out="{{E3}}" data-dy="30"><h1>Your real product. Never distorted.</h1></div>
+<div class="a lbl2" data-in="{{S3_1}}" data-out="{{E3}}" data-dy="20" style="left:915px;top:225px">Your product photo</div>
+<div class="a card" data-in="{{S3_1}}" data-out="{{E3}}" data-dy="60" style="left:900px;top:290px;width:420px;border-radius:28px"><img src="../crops/n_packshot.png"></div>
+<div class="a arrow" data-in="{{S3_2}}" data-out="{{E3}}" data-dy="0" style="left:1350px;top:498px;width:80px"></div>
+<div class="a lbl2" data-in="{{S3_2}}" data-out="{{E3}}" data-dy="20" style="left:1585px;top:62px">Your ad</div>
+<div class="a phone" data-in="{{S3_2}}" data-out="{{E3}}" data-dy="80" style="left:1470px;top:125px;width:380px"><div class="scr"><img id="adv" src="../adclip/f_0001.jpg"></div><div class="notch"></div></div>
+
+<!-- S4: on brand -->
+<div class="a txt" data-in="{{S4_0}}" data-out="{{E4}}" data-dy="30"><h1>On brand from day one.</h1><p class="sub">AdsLine learns your brand the moment you install.</p></div>
+<div class="a card" data-in="{{S4_1}}" data-out="{{E4}}" data-dy="70" style="left:900px;top:330px;width:900px;padding:36px 40px">
+  <img src="../crops/n_tags.png" style="width:500px;margin-bottom:26px"><img src="../crops/n_thumbs.png" style="width:520px;margin-bottom:30px"><img src="../crops/n_palette.png" style="width:820px"></div>
+
+<!-- S5: autopilot or approve -->
+<div class="a txt" data-in="{{S5_0}}" data-out="{{E5}}" data-dy="30"><h1>Autopilot, or approve each one.</h1></div>
+<div class="a chip" data-in="{{S5_1}}" data-out="{{E5}}" data-dy="40" style="left:1440px;top:170px;width:340px"><img src="../crops/n_autopilot.png"></div>
+<div class="a ring" data-pulse="{{S5_3}}" data-out="{{E5}}" style="left:1428px;top:160px;width:364px;height:96px"></div>
+<div class="a card" data-in="{{S5_2}}" data-out="{{E5}}" data-dy="70" style="left:880px;top:330px;width:960px;padding:8px 0 16px">
+  <img src="../crops/n_sug_head.png"><img src="../crops/n_sug_copy.png"><img src="../crops/n_sug_btns.png" style="width:300px"></div>
+
+<!-- S6: gallery -->
+<div class="a txt" data-in="{{S6_0}}" data-out="{{E6}}" data-dy="30"><h1>Every ad, ready to launch.</h1></div>
+<div class="a card" data-in="{{S6_1}}" data-out="{{E6}}" data-dy="70" style="left:890px;top:220px;width:950px"><img src="../crops/n_gallery.png"></div>
+
+<!-- S7: end card -->
+<div class="a center" data-in="{{S7_0}}" data-out="999" data-dy="30">
+  <div class="lock"><div class="icon">Ads</div><h1>AdsLine</h1></div>
+  <p class="sub" style="font-size:44px;color:#fff">Video ads on autopilot</p>
+  <div class="pill">Free plan on the Shopify App Store</div>
+</div>
+
+<script>
+const clamp=x=>Math.max(0,Math.min(1,x));
+const ease=x=>1-Math.pow(1-x,3);
+const els=[...document.querySelectorAll('.a')];
+const ADF=198, adStart={{S3_2}};
+const adImgs=[...Array(ADF)].map((_,i)=>{const im=new Image(); im.src=`../adclip/f_${String(i+1).padStart(4,'0')}.jpg`; return im;});
+async function render(t){
+  const g1x=60+10*Math.sin(t/6), g2x=15+10*Math.cos(t/7);
+  document.getElementById('bg').style.background=
+    `radial-gradient(900px 700px at ${g1x}% 45%,rgba(124,77,255,.55),transparent 70%),`+
+    `radial-gradient(900px 600px at ${g2x}% 100%,rgba(47,91,255,.45),transparent 70%),#150F45`;
+  for(const e of els){
+    const out=+e.dataset.out;
+    if(e.dataset.pulse!==undefined){
+      const p=+e.dataset.pulse, k=(t-p)%0.9, on=t>=p && t<p+1.8 && t<out;
+      e.style.opacity=on?(1-k/0.9):0; e.style.transform=`scale(${1+0.2*(k/0.9)})`; continue;
+    }
+    const tin=+e.dataset.in, dy=+(e.dataset.dy||0);
+    const pi=ease(clamp((t-tin)/0.7)), po=clamp((t-(out-0.45))/0.45);
+    e.style.opacity=pi*(1-po);
+    e.style.transform=`translateY(${(1-pi)*dy - po*20}px)`;
+  }
+  // real ad video playing inside the phone
+  const idx=Math.max(0,Math.floor((t-adStart)*30))%ADF;
+  const im=document.getElementById('adv'); im.src=adImgs[idx].src;
+  try{ await im.decode(); }catch(e){}
+}
+window.render=render; render(0);
+</script>
+</body></html>
